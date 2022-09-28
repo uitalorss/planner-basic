@@ -1,0 +1,176 @@
+:root{
+  --blue: #6688FF;
+  --blue-200: #66D1FF;
+  --orange: #FFA246;
+  --green: #35E185;
+  --purple: #B266FF;
+  --pink: #FF66D4;
+  --tomato: #FF6666;
+  --white: #ffffff
+}
+
+body{
+  font-family: 'Poppins', sans-serif;
+}
+
+
+header{
+  box-shadow: 0px 4px 24px rgba(168, 168, 168, 0.25);
+  border-radius: 35px;
+  padding: 2rem 0;
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+  gap: 2rem;
+}
+
+h3{
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.375rem;
+  line-height: 1.675rem;
+  font-weight: 700;
+}
+
+p{
+  font-family: 'Poppins', sans-serif;
+  font-size: .875rem;
+  line-height: 1.125rem;
+}
+
+.header__title-content{
+  padding: .625rem;
+  background: var(--blue);
+  border-radius: 0 14px 14px 0;
+}
+
+.header__title-content h3, .header__title-content p{
+  color: #ffffff;
+}
+
+.header__buttons{
+  gap: 1rem;
+}
+
+.header__info-time{
+  margin-right: 2rem;
+}
+
+.header__info-time .info-time--hour{
+  font-size: 2.5rem;
+  line-height: 3rem;
+  font-weight: 400;
+}
+
+.btn{
+  font-family: 'Nunito', sans-serif;
+  padding: .5rem 1rem;
+}
+
+.btn-success{
+  background: #2CBE82;
+  border: #2CBE82;
+}
+
+.btn-danger{
+  background: #DA2B40;
+  border: #DA2B40;
+}
+
+.input-data{
+  gap: 1.75rem;
+  margin: 1.5rem 0 2.25rem 3rem;
+}
+
+.form-control{
+  width: 425px;
+}
+
+.form-select{
+  width: 300px;
+}
+
+.add-task, .remove-tasks{
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.add-task .fa-plus, .remove-tasks .fa-minus{
+  font-size: 1.5rem;
+}
+
+
+
+.planner-content{
+  display: grid;
+  padding: 1rem 1.5rem 1rem 1rem;
+  grid-template-areas: 
+  "horario dias dias dias dias"
+  "horario conteudo conteudo conteudo conteudo"
+  "horario conteudo conteudo conteudo conteudo";
+}
+
+.planner-content .time{
+  grid-area: horario;
+}
+
+.time .time-label{
+  text-align: center;
+  width: 85px;
+  height: 75px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0px 4px 24px rgba(168, 168, 168, 0.25);
+  border-radius: 10px;
+}
+
+.appointments{
+  grid-area: conteudo;
+}
+
+.label-days{
+  grid-area: dias;
+  display: flex;
+  gap: 1rem;
+}
+
+.label-days .day{
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  width: 150px;
+  text-align: center;
+  padding: .5rem 0;
+  color: var(--white);
+  border-radius: 9px 9px 0 0 ;
+}
+
+.label-days .segunda{
+  background: var(--orange);
+}
+
+.label-days .terca{
+  background: var(--green);
+}
+
+.label-days .quarta{
+  background: var(--blue);
+}
+
+.label-days .quinta{
+  background: var(--purple);
+}
+
+.label-days .sexta{
+  background: var(--blue-200);
+}
+
+.label-days .sabado{
+  background: var(--pink);
+}
+
+.label-days .domingo{
+  background: var(--tomato);
+}
+
