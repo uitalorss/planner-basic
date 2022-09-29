@@ -32,8 +32,8 @@
     </div>
   </header>
   <section class="input-data d-flex">
-    <input type="text" class="form-control" id="task" aria-describedby="atividade" placeholder="Atividade">
-    <select class="form-select" aria-label="Dias da semana">
+    <input type="text" class="form-control atividade" id="task" aria-describedby="atividade" placeholder="Atividade">
+    <select class="form-select days" aria-label="Dias da semana">
       <option selected value="segunda">Segunda-feira</option>
       <option value="terca">Terça-feira</option>
       <option value="quarta">Quarta-feira</option>
@@ -43,8 +43,8 @@
       <option value="domingo">Domingo</option>
     </select>
     <div class="input-group select-time">
-      <input class="form-control" type="number" min="0" max="23">
-      <select class="form-select" aria-label="Dias da semana">
+      <input class="form-control hour" type="number" min="0" max="23">
+      <select class="form-select minute" aria-label="Dias da semana">
         <option selected value="00">00m</option>
         <option value="10">10m</option>
         <option value="20">20m</option>
@@ -90,6 +90,7 @@
       </div>
     </section>
   </main>
+  <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
