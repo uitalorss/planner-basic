@@ -42,6 +42,17 @@
       <option value="sabado">Sábado</option>
       <option value="domingo">Domingo</option>
     </select>
+    <div class="input-group select-time">
+      <input class="form-control" type="number" min="0" max="23">
+      <select class="form-select" aria-label="Dias da semana">
+        <option selected value="00">00m</option>
+        <option value="10">10m</option>
+        <option value="20">20m</option>
+        <option value="30">30m</option>
+        <option value="40">40m</option>
+        <option value="50">50m</option>
+      </select>
+    </div>
     <button class="btn btn-success add-task">
       <svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" width="16" height="16" viewBox="0 0 448 512">
         <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
@@ -68,8 +79,16 @@
     </section>
     <section class="time">
       <span class="time-label">Horário</span>
+      <div class="card-time">
+        10h30m
+      </div>
     </section>
-    <section class="appointments"></section>
+    <section class="appointments">
+      <div class="card-appointment">
+        <p class="card-appointment__text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas corporis, ducimus.</p>
+        <button class="btn btn-danger btn-apagar">Apagar</button>
+      </div>
+    </section>
   </main>
 </body>
 

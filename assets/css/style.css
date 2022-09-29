@@ -6,11 +6,15 @@
   --purple: #B266FF;
   --pink: #FF66D4;
   --tomato: #FF6666;
-  --white: #ffffff
+  --white: #ffffff;
+  --red: #98031E;
 }
 
 body{
   font-family: 'Poppins', sans-serif;
+  background-image: url(../img/logo-uol.svg);
+  background-repeat: no-repeat;
+  background-position: 110% -80%;
 }
 
 
@@ -88,6 +92,10 @@ p{
   width: 300px;
 }
 
+.select-time{
+  width: 10%;
+}
+
 .add-task, .remove-tasks{
   display: flex;
   align-items: center;
@@ -104,30 +112,90 @@ p{
   display: grid;
   padding: 1rem 1.5rem 1rem 1rem;
   grid-template-areas: 
-  "horario dias dias dias dias"
-  "horario conteudo conteudo conteudo conteudo"
-  "horario conteudo conteudo conteudo conteudo";
+  "horario dias dias dias dias dias"
+  "horario conteudo conteudo conteudo conteudo conteudo"
+  "horario conteudo conteudo conteudo conteudo conteudo"
+  "horario conteudo conteudo conteudo conteudo conteudo"
+  "horario conteudo conteudo conteudo conteudo conteudo"
+  "horario conteudo conteudo conteudo conteudo conteudo";
 }
 
 .planner-content .time{
   grid-area: horario;
+  display: grid;
+  gap: 1rem 0;
 }
 
 .time .time-label{
-  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
   width: 85px;
   height: 75px;
   margin: 0 auto;
   display: flex;
   align-items: center;
-  text-align: center;
+  justify-content: center;
+  box-shadow: 0px 4px 24px rgba(168, 168, 168, 0.25);
+  border-radius: 10px;
+}
+
+.time .card-time{
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  width: 85px;
+  height: 75px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--blue);
+  opacity: 80%;
   box-shadow: 0px 4px 24px rgba(168, 168, 168, 0.25);
   border-radius: 10px;
 }
 
 .appointments{
   grid-area: conteudo;
+  margin-top: 1rem;
 }
+
+.appointments .card-appointment{
+  position: relative;
+  display: flex;
+  max-width: 30vw;
+  box-shadow: 0px 4px 24px rgba(168, 168, 168, 0.5);
+  padding: 1rem 1.5rem;
+  border-radius: 15px;
+}
+
+.appointments .card-appointment .card-appointment__text{
+  width: 90%;
+}
+
+.appointments .card-appointment .card-appointment__text::before{
+  content: '';
+  display: block;
+  top: 0;
+  width: 10px;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  background: var(--blue);
+  border-radius: 15px 0 0 15px;
+}
+
+
+.appointments .card-appointment .btn-apagar{
+  font-family: 'Nunito', sans-serif;
+  background: var(--red);
+  font-weight: 700;
+  font-size: .75rem;
+  padding: .15rem;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
 
 .label-days{
   grid-area: dias;
