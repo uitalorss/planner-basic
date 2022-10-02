@@ -24,6 +24,9 @@
 */
 
 (() => {
+  window.addEventListener("load", viewLocalStorage)
+
+
   const randomId = () => {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
       var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
@@ -40,6 +43,8 @@
   let view = document.querySelector(".appointments")
 
   let addApointment = document.querySelector(`[data-button="add-task"]`);
+  let saveInLocalStorage = document.querySelector(`[data-button="add-localStorage"]`)
+  let resetData = document.querySelector(`[data-button="remove-localStorage"]`)
   let list = []
 
 
@@ -120,4 +125,29 @@
       })
     })
   }
+
+  saveInLocalStorage.addEventListener("click", saveLocalStorage);
+  resetData.addEventListener("click", resetLocalStorage);
+
+  function saveLocalStorage(){
+    localStorage.setItem('tasks', JSON.stringify(list));
+    alert("Seus itens estão salvos no localStorage!")
+  }
+
+  function viewLocalStorage(){
+    if(localStorage.getItem('tasks')){
+      list = JSON.parse(localStorage.getItem('tasks'));
+    }else{
+      list = [];
+    }
+  }
+
+  function resetLocalStorage(){
+    localStorage.clear();
+    list = [];
+    clearContentPlanner();
+    alert("Seus dados foram resetados.");
+  }
+
+
 })()
