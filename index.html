@@ -16,10 +16,10 @@
 </head>
 
 <body>
-  <header class="">
-    <div class="header__title-content d-flex flex-column justify-content-center">
-      <h3>Planejamento Semanal</h3>
-      <p>Utilize o formulário para adicionar novas tarefas:</p>
+  <header class="header">
+    <div class="header-description d-flex flex-column justify-content-center">
+      <h3 class="header-description__title">Planejamento Semanal</h3>
+      <p class="header-description__subtitle">Utilize o formulário para adicionar novas tarefas:</p>
     </div>
     <div class="header__buttons d-flex justify-content-center align-items-center">
       <button class="btn btn-success">Salvar localStorage</button>
@@ -31,9 +31,9 @@
       <p class="info-time--date">29 de Agosto de 2022</p>
     </div>
   </header>
-  <section class="input-data d-flex">
-    <input type="text" class="form-control atividade" id="task" aria-describedby="atividade" placeholder="Atividade">
-    <select class="form-select days" aria-label="Dias da semana">
+  <section class="form-task d-flex">
+    <input data-form="appointment" type="text" class="form-control form-task__input" id="task" aria-describedby="atividade" placeholder="Atividade">
+    <select data-form="select-day" class="form-select form-task__select-day" aria-label="Dias da semana">
       <option selected value="segunda">Segunda-feira</option>
       <option value="terca">Terça-feira</option>
       <option value="quarta">Quarta-feira</option>
@@ -42,9 +42,9 @@
       <option value="sabado">Sábado</option>
       <option value="domingo">Domingo</option>
     </select>
-    <div class="input-group select-time">
-      <input class="form-control hour" type="number" min="0" max="23">
-      <select class="form-select minute" aria-label="Dias da semana">
+    <div class="input-group form-task__select-hour">
+      <input data-form="select-hour" class="form-control hour" type="number" min="0" max="23">
+      <select data-form="select-minute" class="form-select minute" aria-label="Dias da semana">
         <option selected value="00">00m</option>
         <option value="10">10m</option>
         <option value="20">20m</option>
@@ -53,44 +53,36 @@
         <option value="50">50m</option>
       </select>
     </div>
-    <button class="btn btn-success add-task">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" width="16" height="16" viewBox="0 0 448 512">
-        <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-        <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
-      </svg>
+    <button data-button="add-task" class="btn btn-success form-task__buton--add-task">
       Adicionar Atividade
     </button>
-    <button class="btn btn-danger remove-tasks">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" width="16" height="16" viewBox="0 0 448 512">
-        <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-        <path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z" />
-      </svg>
+    <button data-button="remove-tasks" class="btn btn-danger form-task__buton--remove-tasks">
       Excluir todos</button>
   </section>
-  <main class="planner-content">
-    <section class="label-days">
-      <span class="day segunda">Segunda-feira</span>
-      <span class="day terca">Terça-feira</span>
-      <span class="day quarta">Quarta-feira</span>
-      <span class="day quinta">Quinta-feira</span>
-      <span class="day sexta">Sexta-feira</span>
-      <span class="day sabado">Sábado</span>
-      <span class="day domingo">Domingo</span>
-    </section>
-    <section class="time">
-      <span class="time-label">Horário</span>
-      <div class="card-time">
-        10h30m
+  <section class="planner-content">
+    <div class="tags">
+      <span class="tags__time-label">Horário</span>
+      <button data-day="segunda" class="tags__button-day segunda">Segunda-feira</button>
+      <button data-day="terca" class="tags__button-day terca">Terça-feira</button>
+      <button data-day="quarta" class="tags__button-day quarta">Quarta-feira</button>
+      <button data-day="quinta" class="tags__button-day quinta">Quinta-feira</button>
+      <button data-day="sexta" class="tags__button-day sexta">Sexta-feira</button>
+      <button data-day="sabado" class="tags__button-day sabado">Sábado</button>
+      <button data-day="domingo" class="tags__button-day domingo">Domingo</button>
+    </div>
+    <div class="appointments">
+      <div class="appointments__item">
+        <div class="appointments__item--time">
+          10h30m
+        </div>
+        <div class="appointments__item--description">
+          <p class="appointments__item--description-content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas corporis, ducimus.</p>
+          <button data-button="delete-item" class="btn btn-danger appointments__item--description-button">Apagar</button>
+        </div>
       </div>
-    </section>
-    <section class="appointments">
-      <div class="card-appointment">
-        <p class="card-appointment__text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas corporis, ducimus.</p>
-        <button class="btn btn-danger btn-apagar">Apagar</button>
-      </div>
-    </section>
-  </main>
-  <script src="./assets/js/script.js"></script>
+    </div>
+  </section>
+  <script type="module" src="./assets/js/script.js"></script>
 </body>
 
 </html>

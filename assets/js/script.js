@@ -24,89 +24,89 @@
 */
 
  //formulários
-  let appointment = document.querySelector(".atividade");
-  let selectDays = document.querySelector(".days");
-  let hour = document.querySelector(".hour");
-  let minute = document.querySelector(".minute");
-  let addApointment = document.querySelector(".add-task");
-  const plannerDays = document.querySelectorAll('[data-day]');
-  let view = document.querySelector(".appointments")
+ let appointment = document.querySelector(".atividade");
+ let selectDays = document.querySelector(".days");
+ let hour = document.querySelector(".hour");
+ let minute = document.querySelector(".minute");
+ let addApointment = document.querySelector(".add-task");
+ const plannerDays = document.querySelectorAll('[data-day]');
+ let view = document.querySelector(".appointments")
 
-  let list = []
-
-
-  plannerDays.forEach(plannerDay => plannerDay.addEventListener("click", ()=> {
-    const day = plannerDay.dataset.day;
-    showDayTasks(day);
-    //console.log(`cliquei em ${day}`);
-  }))
-
-  const showDayTasks = (dayOfWeek) => {
-    let dailyTasks = list.filter((task) => task.day === dayOfWeek);
-    let content = document.createElement("div");
-    clearContent();
-    console.log(dailyTasks)
-    dailyTasks.forEach((item) => {
-      let appointmentsItem = document.createElement("div");
-      let cardTime = document.createElement("div");
-      let appointmentCard = document.createElement("div");
-      let deleteItem = document.createElement("button");
-
-      appointmentsItem.classList.add("appointments__item");
-      cardTime.classList.add("card-time");
-      appointmentCard.classList.add("card-appointment")
-      deleteItem.classList.add("btn","btn-danger","btn-apagar");
-      
-      
-      cardTime.innerHTML = `${item.hour}h${item.minute}m`;
-      appointmentCard.innerHTML = `${item.description}`;
-      deleteItem.innerHTML = "Apagar";
-      
-      appointmentsItem.appendChild(cardTime);
-      appointmentsItem.appendChild(appointmentCard);
-      appointmentCard.appendChild(deleteItem);
-      view.appendChild(appointmentsItem);
-      /*content.innerHTML = `
-        <div class="appointments__item">
-        <div class="card-time">
-          
-        </div>
-        <div class="card-appointment">
-          <p class="card-appointment__text"></p>
-          <button class="btn btn-danger btn-apagar">Apagar</button>
-        </div>
-      `*/
-    })
-    
-  }
+ let list = []
 
 
-  addApointment.addEventListener("click", () => {
-    addTask();
-  })
+ plannerDays.forEach(plannerDay => plannerDay.addEventListener("click", ()=> {
+   const day = plannerDay.dataset.day;
+   showDayTasks(day);
+   //console.log(`cliquei em ${day}`);
+ }))
 
-  function addTask(){
-    if(appointment.value === '' || hour.value === ''){
-      alert("Você deixou espaços em branco.")
-    }else{
-      list.push({
-        description: appointment.value,
-        day: selectDays.value,
-        hour: hour.value,
-        minute: minute.value
-      })
-      alert("Inserido!!");
-      //clearFields();
-    }
-  }
+ const showDayTasks = (dayOfWeek) => {
+   let dailyTasks = list.filter((task) => task.day === dayOfWeek);
+   let content = document.createElement("div");
+   clearContent();
+   console.log(dailyTasks)
+   dailyTasks.forEach((item) => {
+     let appointmentsItem = document.createElement("div");
+     let cardTime = document.createElement("div");
+     let appointmentCard = document.createElement("div");
+     let deleteItem = document.createElement("button");
 
-  function clearContent(){
-    view.innerText = '';
-  }
-  /*
-  function clearFields(){
-    appointment.value = '';
-    day.value = 'segunda';
-    hour.value = '';
-    minute.value = '00';
-  }*/
+     appointmentsItem.classList.add("appointments__item");
+     cardTime.classList.add("card-time");
+     appointmentCard.classList.add("card-appointment")
+     deleteItem.classList.add("btn","btn-danger","btn-apagar");
+     
+     
+     cardTime.innerHTML = `${item.hour}h${item.minute}m`;
+     appointmentCard.innerHTML = `${item.description}`;
+     deleteItem.innerHTML = "Apagar";
+     
+     appointmentsItem.appendChild(cardTime);
+     appointmentsItem.appendChild(appointmentCard);
+     appointmentCard.appendChild(deleteItem);
+     view.appendChild(appointmentsItem);
+     /*content.innerHTML = `
+       <div class="appointments__item">
+       <div class="card-time">
+         
+       </div>
+       <div class="card-appointment">
+         <p class="card-appointment__text"></p>
+         <button class="btn btn-danger btn-apagar">Apagar</button>
+       </div>
+     `*/
+   })
+   
+ }
+
+
+ addApointment.addEventListener("click", () => {
+   addTask();
+ })
+
+ function addTask(){
+   if(appointment.value === '' || hour.value === ''){
+     alert("Você deixou espaços em branco.")
+   }else{
+     list.push({
+       description: appointment.value,
+       day: selectDays.value,
+       hour: hour.value,
+       minute: minute.value
+     })
+     alert("Inserido!!");
+     //clearFields();
+   }
+ }
+
+ function clearContent(){
+   view.innerText = '';
+ }
+ /*
+ function clearFields(){
+   appointment.value = '';
+   day.value = 'segunda';
+   hour.value = '';
+   minute.value = '00';
+ }*/

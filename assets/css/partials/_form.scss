@@ -1,0 +1,23 @@
+.form-task{
+  gap: 1.75rem;
+  margin: 1.5rem 0 2.25rem 3rem;
+  .form-task__input{
+    width: 425px;
+  }
+
+  .form-task__select-day{
+    width: 300px;
+  }
+
+  .form-task__select-hour{
+    width: 10%;
+  }
+
+  .form-task__buton--add-task{
+    @include icons-in-buttons(url(../../../assets/img/plus.svg));
+  }
+
+  .form-task__buton--remove-tasks{
+    @include icons-in-buttons(url(../../../assets/img/minus.svg));
+  }
+}

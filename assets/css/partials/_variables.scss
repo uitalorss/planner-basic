@@ -1,0 +1,30 @@
+$blue: #6688FF;
+$blue-200: #66D1FF;
+$orange: #FFA246;
+$green: #35E185;
+$purple: #B266FF;
+$pink: #FF66D4;
+$tomato: #FF6666;
+$white: #ffffff;
+$red: #98031E;
+
+@mixin icons-in-buttons($icon){
+  display: flex;
+  justify-content: center;
+  gap: 0 5px;
+  margin-top: 3px;
+  &::before{
+    content: $icon;
+    margin-top: 3px;
+  }
+}
+
+.btn-success{
+  background: #2CBE82;
+  border: #2CBE82;
+}
+
+.btn-danger{
+  background: #DA2B40;
+  border: #DA2B40;
+}

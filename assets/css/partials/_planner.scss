@@ -1,0 +1,122 @@
+.planner-content{
+  padding: 1rem 1.5rem 1rem 1rem;
+  .tags{
+    display: flex;
+    gap: 1rem;
+    .tags__time-label{
+      font-family: 'Poppins', sans-serif;
+      font-size: 17px;
+      align-items: center;
+      padding: .5rem 2rem;
+      text-align: center;
+      justify-content: center;
+      box-shadow: 0px 4px 24px rgba(168, 168, 168, 0.25);
+      border-radius: 10px;
+    }
+    .tags__button-day{
+      font-family: 'Poppins', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      width: 150px;
+      text-align: center;
+      padding: .5rem 0;
+      color: $white;
+      border-radius: 9px 9px 0 0;
+      border: none;
+      transition: .2s;
+      &:active{
+        transform: scale(1.03);
+      }
+    }
+
+    .segunda{
+      background: $orange;
+    }
+    
+    .terca{
+      background: $green;
+    }
+    
+    .quarta{
+      background: $blue;
+    }
+    
+    .quinta{
+      background: $purple;
+    }
+    
+    .sexta{
+      background: $blue-200;
+    }
+    
+    .sabado{
+      background: $pink;
+    }
+    
+    .domingo{
+      background: $tomato;
+    }
+  }
+
+  .appointments{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 1rem;
+    height: 300px;
+    width: 100%;
+    display: flex;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    .appointments__item{
+      display: flex;
+      gap: 2rem;
+      .appointments__item--time{
+        font-family: 'Poppins', sans-serif;
+        font-size: 17px;
+        width: 85px;
+        height: 75px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $blue;
+        opacity: 80%;
+        box-shadow: 0px 4px 24px rgba(168, 168, 168, 0.25);
+        border-radius: 10px;
+      }
+      .appointments__item--description{
+        position: relative;
+        display: flex;
+        width: 500px;
+        max-height: 75px;
+        box-shadow: 0px 4px 24px rgba(168, 168, 168, 0.5);
+        padding: 1rem 1.5rem;
+        border-radius: 15px;
+        .appointments__item--description-content{
+          width: 90%;
+          &:before{
+            content: '';
+            display: block;
+            top: 0;
+            width: 10px;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            background: $blue;
+            border-radius: 15px 0 0 15px;
+          }
+        }
+        .appointments__item--description-button{
+          font-family: 'Nunito', sans-serif;
+          background: $red;
+          font-weight: 700;
+          font-size: .75rem;
+          padding: .15rem;
+          position: absolute;
+          top: 10px;
+          right: 10px;
+        }
+      }
+    }
+  }
+}
