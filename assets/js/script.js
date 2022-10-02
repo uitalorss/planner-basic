@@ -24,15 +24,23 @@
 */
 
  //formulários
- let appointment = document.querySelector(".atividade");
- let selectDays = document.querySelector(".days");
- let hour = document.querySelector(".hour");
- let minute = document.querySelector(".minute");
- let addApointment = document.querySelector(".add-task");
+ let appointment = document.querySelector(`[data-form="appointment"]`);
+ let selectDays = document.querySelector(`[data-form="select-day"]`);
+ let hour = document.querySelector(`[data-form="select-hour"]`);
+ let minute = document.querySelector(`[data-form="select-minute"]`);
  const plannerDays = document.querySelectorAll('[data-day]');
  let view = document.querySelector(".appointments")
 
+ let addApointment = document.querySelector(`[data-button="add-task"]`);
  let list = []
+
+
+   const randomId = () => {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
 
 
  plannerDays.forEach(plannerDay => plannerDay.addEventListener("click", ()=> {
@@ -86,27 +94,28 @@
  })
 
  function addTask(){
-   if(appointment.value === '' || hour.value === ''){
-     alert("Você deixou espaços em branco.")
-   }else{
-     list.push({
-       description: appointment.value,
-       day: selectDays.value,
-       hour: hour.value,
-       minute: minute.value
-     })
-     alert("Inserido!!");
-     //clearFields();
-   }
- }
+  if(appointment.value === '' || hour.value === ''){
+    alert("Você deixou espaços em branco.")
+  }else{
+    list.push({
+      id: randomId(),
+      description: appointment.value,
+      day: selectDays.value,
+      hour: hour.value,
+      minute: minute.value
+    })
+    alert("Inserido!!");
+    clearFields();
+  }
+}
 
  function clearContent(){
    view.innerText = '';
  }
- /*
+
  function clearFields(){
-   appointment.value = '';
-   day.value = 'segunda';
-   hour.value = '';
-   minute.value = '00';
- }*/
+  appointment.value = '';
+  selectDays.value = 'segunda';
+  hour.value = '';
+  minute.value = '00';
+}
