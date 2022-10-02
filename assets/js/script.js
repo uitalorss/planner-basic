@@ -53,40 +53,43 @@
    let dailyTasks = list.filter((task) => task.day === dayOfWeek);
    let content = document.createElement("div");
    clearContent();
-   console.log(dailyTasks)
-   dailyTasks.forEach((item) => {
-     let appointmentsItem = document.createElement("div");
-     let cardTime = document.createElement("div");
-     let appointmentCard = document.createElement("div");
-     let deleteItem = document.createElement("button");
-
-     appointmentsItem.classList.add("appointments__item");
-     cardTime.classList.add("card-time");
-     appointmentCard.classList.add("card-appointment")
-     deleteItem.classList.add("btn","btn-danger","btn-apagar");
-     
-     
-     cardTime.innerHTML = `${item.hour}h${item.minute}m`;
-     appointmentCard.innerHTML = `${item.description}`;
-     deleteItem.innerHTML = "Apagar";
-     
-     appointmentsItem.appendChild(cardTime);
-     appointmentsItem.appendChild(appointmentCard);
-     appointmentCard.appendChild(deleteItem);
-     view.appendChild(appointmentsItem);
-     /*content.innerHTML = `
-       <div class="appointments__item">
-       <div class="card-time">
-         
-       </div>
-       <div class="card-appointment">
-         <p class="card-appointment__text"></p>
-         <button class="btn btn-danger btn-apagar">Apagar</button>
-       </div>
-     `*/
-   })
-   
+   showContent(dailyTasks);
  }
+
+ function showContent(taskList){
+  taskList.forEach((item) => {
+    let appointmentsItem = document.createElement("div");
+    let cardTime = document.createElement("div");
+    let appointmentCard = document.createElement("div");
+    let contentAppointment = document.createElement("p");
+    let deleteItem = document.createElement("button");
+
+    appointmentsItem.classList.add("appointments__item");
+    cardTime.classList.add("appointments__item--time");
+    contentAppointment.classList.add("appointments__item--description-content")
+    appointmentCard.classList.add("appointments__item--description");
+    deleteItem.classList.add("btn","btn-danger","appointments__item--description-button");
+    deleteItem.setAttribute('data-button', 'delete-item');
+
+    contentAppointment.innerHTML = `${item.description}`
+    cardTime.innerHTML = `${item.hour}h${item.minute}m`;
+    deleteItem.innerHTML = "Apagar";
+    
+    appointmentsItem.appendChild(cardTime);
+    appointmentsItem.appendChild(appointmentCard);
+    appointmentCard.appendChild(contentAppointment);
+    appointmentCard.appendChild(deleteItem);
+    view.appendChild(appointmentsItem);
+
+    deleteItem.addEventListener("click", () => {
+      let updateTask = list.filter((task) =>{
+        return item.id != task.id;
+      })
+      list = updateTask;
+      showDayTasks(item.day);
+    })
+  })
+}
 
 
  addApointment.addEventListener("click", () => {
