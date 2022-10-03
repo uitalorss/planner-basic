@@ -1,3 +1,11 @@
+$segunda: #FFA246;
+$terca: #35E185;
+$quarta: #6688FF;
+$quinta: #B266FF;
+$sexta: #66D1FF;
+$sabado: #FF66D4;
+$domingo: #FF6666;
+
 .planner-content{
   padding: 1rem 1.5rem 1rem 1rem;
   .tags{
@@ -30,31 +38,31 @@
     }
 
     .segunda{
-      background: $orange;
+      background: $segunda;
     }
     
     .terca{
-      background: $green;
+      background: $terca;
     }
     
     .quarta{
-      background: $blue;
+      background: $quarta;
     }
     
     .quinta{
-      background: $purple;
+      background: $quinta;
     }
     
     .sexta{
-      background: $blue-200;
+      background: $sexta;
     }
     
     .sabado{
-      background: $pink;
+      background: $sabado;
     }
     
     .domingo{
-      background: $tomato;
+      background: $domingo;
     }
   }
 
