@@ -1,6 +1,6 @@
 /** Ações necessárias <header>
- * Vou precisar fazer uma função para pegar todos os compromissos e salvar no localstorage e atribuir ao botão Salvar localStorage
- * Vou precisar fazer uma função para apagar os dados do localstorage e atribuir ao botão Excluir localStorage.
+ * Vou precisar fazer uma função para pegar todos os compromissos e salvar no localstorage e atribuir ao botão Salvar localStorage (FEITO)
+ * Vou precisar fazer uma função para apagar os dados do localstorage e atribuir ao botão Excluir localStorage. (FEITO)
  * Vou precisar pegar os dados de data e hora do computador e linkar ao exemplo de data e hora que está no header.
  */
 
@@ -148,6 +148,4 @@
     clearContentPlanner();
     alert("Seus dados foram resetados.");
   }
-
-
 })()
