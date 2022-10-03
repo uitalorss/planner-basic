@@ -92,6 +92,10 @@
   }
   
   function showContent(taskList){
+    taskList.sort(function(x, y){
+      return x.hour - y.hour
+    })
+    console.log(taskList);
     taskList.forEach((item) => {
       let appointmentsItem = document.createElement("div");
       let cardTime = document.createElement("div");
