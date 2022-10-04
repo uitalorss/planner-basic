@@ -1,7 +1,7 @@
 /** Ações necessárias <header>
  * Vou precisar fazer uma função para pegar todos os compromissos e salvar no localstorage e atribuir ao botão Salvar localStorage (FEITO)
  * Vou precisar fazer uma função para apagar os dados do localstorage e atribuir ao botão Excluir localStorage. (FEITO)
- * Vou precisar pegar os dados de data e hora do computador e linkar ao exemplo de data e hora que está no header.
+ * Vou precisar pegar os dados de data e hora do computador e linkar ao exemplo de data e hora que está no header. (FEITO)
  */
 
 /** Ações necessárias <formulário>
@@ -122,13 +122,15 @@
       let appointmentCard = document.createElement("div");
       let contentAppointment = document.createElement("p");
       let deleteItem = document.createElement("button");
+      let indicateBar = document.createElement("div")
       let color = item.day;
       let conflicts = [];
 
       if(item.conflict === false){
         appointmentsItem.classList.add("appointments__item");
-        cardTime.classList.add("appointments__item--time");
+        cardTime.classList.add("appointments__item--time", `${item.day}`);
         contentAppointment.classList.add("appointments__item--description-content");
+        indicateBar.classList.add("bar", `${item.day}`);
         appointmentCard.classList.add("appointments__item--description");
         deleteItem.classList.add("btn","btn-danger","appointments__item--description-button");
         deleteItem.setAttribute('data-button', 'delete-item');
@@ -136,11 +138,14 @@
         contentAppointment.innerHTML = `${item.description}`
         cardTime.innerHTML = `${item.hour}h${item.minute}m`;
         deleteItem.innerHTML = "Apagar";
+      
         
         appointmentsItem.appendChild(cardTime);
         appointmentsItem.appendChild(appointmentCard);
-        appointmentCard.appendChild(contentAppointment);
+        appointmentCard.appendChild(indicateBar);
+        appointmentCard.appendChild(contentAppointment);        
         appointmentCard.appendChild(deleteItem);
+        appointmentCard.appendChild(indicateBar)
         view.appendChild(appointmentsItem);
         //changeColorThroughDays(contentAppointment);
       }else{
