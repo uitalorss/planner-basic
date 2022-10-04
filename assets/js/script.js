@@ -46,13 +46,13 @@
   let saveInLocalStorage = document.querySelector(`[data-button="add-localStorage"]`);
   let resetData = document.querySelector(`[data-button="remove-localStorage"]`);
   let removeTasksOfDay = document.querySelector(`[data-button="remove-tasks"]`);
-  let dayToRemove;
+  let daySelected;
   let list = []
   
 
   plannerDays.forEach(plannerDay => plannerDay.addEventListener("click", ()=> {
     const day = plannerDay.dataset.day;
-    dayToRemove = day;
+    daySelected = day;
     showDayTasks(day);
   }))
 
@@ -76,11 +76,29 @@
         description: appointment.value,
         day: selectDays.value,
         hour: hour.value,
-        minute: minute.value
+        minute: minute.value,
+        conflict: false
       })
       alert("Inserido!!");
       clearFields();
+      showDayTasks(daySelected);
     }
+  }
+
+  function generateConflict(list){
+    list.forEach((item) => {
+      let id = item.id;
+      let conflictDay = item.day;
+      let conflictHour = item.hour;
+      let conflictMinute = item.minute;
+      list.forEach((item) => {
+        if(id !== item.id){
+          if(conflictDay === item.day && conflictHour === item.hour && conflictMinute === item.minute){
+            item.conflict = true
+          }
+        }
+      })
+    })
   }
   
   function clearFields(){
@@ -105,25 +123,35 @@
       let contentAppointment = document.createElement("p");
       let deleteItem = document.createElement("button");
       let color = item.day;
+      let conflicts = [];
 
-      appointmentsItem.classList.add("appointments__item");
-      cardTime.classList.add("appointments__item--time");
-      contentAppointment.classList.add("appointments__item--description-content");
-      appointmentCard.classList.add("appointments__item--description");
-      deleteItem.classList.add("btn","btn-danger","appointments__item--description-button");
-      deleteItem.setAttribute('data-button', 'delete-item');
-
-      contentAppointment.innerHTML = `${item.description}`
-      cardTime.innerHTML = `${item.hour}h${item.minute}m`;
-      deleteItem.innerHTML = "Apagar";
-      
-      appointmentsItem.appendChild(cardTime);
-      appointmentsItem.appendChild(appointmentCard);
-      appointmentCard.appendChild(contentAppointment);
-      appointmentCard.appendChild(deleteItem);
-      view.appendChild(appointmentsItem);
-      //changeColorThroughDays(contentAppointment);
-
+      if(item.conflict === false){
+        appointmentsItem.classList.add("appointments__item");
+        cardTime.classList.add("appointments__item--time");
+        contentAppointment.classList.add("appointments__item--description-content");
+        appointmentCard.classList.add("appointments__item--description");
+        deleteItem.classList.add("btn","btn-danger","appointments__item--description-button");
+        deleteItem.setAttribute('data-button', 'delete-item');
+  
+        contentAppointment.innerHTML = `${item.description}`
+        cardTime.innerHTML = `${item.hour}h${item.minute}m`;
+        deleteItem.innerHTML = "Apagar";
+        
+        appointmentsItem.appendChild(cardTime);
+        appointmentsItem.appendChild(appointmentCard);
+        appointmentCard.appendChild(contentAppointment);
+        appointmentCard.appendChild(deleteItem);
+        view.appendChild(appointmentsItem);
+        //changeColorThroughDays(contentAppointment);
+      }else{
+        let conflictList = taskList.filter((item) => {
+          if(item.conflict){
+            return item;
+          }
+          conflicts = conflictList;
+        })
+        console.log(conflicts)
+      }
 
       deleteItem.addEventListener("click", () => {
         let updateTask = list.filter((task) =>{
@@ -171,8 +199,8 @@
         return dayToRemove != task.day;
       })
       list = updateTask;
-      showDayTasks(dayToRemove);
-      alert(`Tarefas de ${dayToRemove} excluídas.`)
+      showDayTasks(daySelected);
+      alert(`Tarefas de ${daySelected} excluídas.`)
     }
   })
 })()
