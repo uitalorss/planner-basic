@@ -46,11 +46,25 @@
   let resetData = document.querySelector(`[data-button="remove-localStorage"]`);
   let removeTasksOfDay = document.querySelector(`[data-button="remove-tasks"]`);
   let daySelected;
-  let list = []
-  
+  let list = [];
+
+  function clearEmphasis(){
+    plannerDays.forEach((plannerDay) => {
+      plannerDay.classList.remove("emphasis");
+      plannerDay.classList.add("normal");
+    })
+  }
+
+  function giveEmphasis(value){
+    const button = document.querySelector(`[data-day=${value}]`);
+    button.classList.remove("normal");
+    button.classList.add("emphasis");
+  }
 
   plannerDays.forEach(plannerDay => plannerDay.addEventListener("click", ()=> {
+    clearEmphasis();
     const day = plannerDay.dataset.day;
+    giveEmphasis(day);
     daySelected = day;
     showDayTasks(day);
   }))
