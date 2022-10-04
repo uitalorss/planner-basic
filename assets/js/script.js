@@ -11,9 +11,9 @@
  *    Ao clicar no botão Adicionar atividade, o sistema deve disparar essa função e adicionar no array os dados que estiverem nos inputs (FEITO)
  *    Tratar campos que estiverem vazios. (FEITO)
  *    Disparar uma mensagem de confirmação ao adicionar uma atividade (FEITO)
- * Criar função para excluir todas as atividades
- *  Ao clicar no botão Excluir todos, o sistema deve disparar essa função e excluir todas as tarefas do dia selecionado.
- *  Disparar mensagem de confirmação.
+ * Criar função para excluir todas as atividades (FEITO)
+ *  Ao clicar no botão Excluir todos, o sistema deve disparar essa função e excluir todas as tarefas do dia selecionado. (FEITO)
+ *  Disparar mensagem de confirmação. (FEITO)
  */
 
 /** Ações necessárias (planner)
@@ -25,7 +25,6 @@
 
 (() => {
   window.addEventListener("load", viewLocalStorage)
-
 
   const randomId = () => {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -82,6 +81,10 @@
       alert("Inserido!!");
       clearFields();
       showDayTasks(daySelected);
+      generateConflict(list);
+      list.sort(function(x, y){
+        return x.hour - y.hour
+      })
     }
   }
 
@@ -113,18 +116,13 @@
   }
   
   function showContent(taskList){
-    taskList.sort(function(x, y){
-      return x.hour - y.hour
-    })
     taskList.forEach((item) => {
       let appointmentsItem = document.createElement("div");
       let cardTime = document.createElement("div");
       let appointmentCard = document.createElement("div");
       let contentAppointment = document.createElement("p");
       let deleteItem = document.createElement("button");
-      let indicateBar = document.createElement("div")
-      let color = item.day;
-      let conflicts = [];
+      let indicateBar = document.createElement("div");
 
       if(item.conflict === false){
         appointmentsItem.classList.add("appointments__item");
@@ -134,29 +132,29 @@
         appointmentCard.classList.add("appointments__item--description");
         deleteItem.classList.add("btn","btn-danger","appointments__item--description-button");
         deleteItem.setAttribute('data-button', 'delete-item');
-  
         contentAppointment.innerHTML = `${item.description}`
         cardTime.innerHTML = `${item.hour}h${item.minute}m`;
         deleteItem.innerHTML = "Apagar";
-      
-        
-        appointmentsItem.appendChild(cardTime);
-        appointmentsItem.appendChild(appointmentCard);
-        appointmentCard.appendChild(indicateBar);
-        appointmentCard.appendChild(contentAppointment);        
-        appointmentCard.appendChild(deleteItem);
-        appointmentCard.appendChild(indicateBar)
-        view.appendChild(appointmentsItem);
-        //changeColorThroughDays(contentAppointment);
       }else{
-        let conflictList = taskList.filter((item) => {
-          if(item.conflict){
-            return item;
-          }
-          conflicts = conflictList;
-        })
-        console.log(conflicts)
+        appointmentsItem.classList.add("appointments__item");
+        cardTime.classList.add("appointments__item--time", "danger");
+        contentAppointment.classList.add("appointments__item--description-content");
+        indicateBar.classList.add("bar", "danger");
+        appointmentCard.classList.add("appointments__item--description");
+        deleteItem.classList.add("btn","btn-danger","appointments__item--description-button");
+        deleteItem.setAttribute('data-button', 'delete-item');
+        contentAppointment.innerHTML = `${item.description}`
+        cardTime.innerHTML = `${item.hour}h${item.minute}`;
+        deleteItem.innerHTML = "Apagar";
       }
+
+      appointmentsItem.appendChild(cardTime);
+      appointmentsItem.appendChild(appointmentCard);
+      appointmentCard.appendChild(indicateBar);
+      appointmentCard.appendChild(contentAppointment);        
+      appointmentCard.appendChild(deleteItem);
+      appointmentCard.appendChild(indicateBar)
+      view.appendChild(appointmentsItem);
 
       deleteItem.addEventListener("click", () => {
         let updateTask = list.filter((task) =>{
@@ -190,11 +188,6 @@
     clearContentPlanner();
     alert("Seus dados foram resetados.");
   }
-
-  /*function changeColorThroughDays(content){
-    let emphasisDay = window.getComputedStyle(content, ":before");
-    emphasisDay.setProperty("color", "#333333", undefined);
-  }*/
 
   removeTasksOfDay.addEventListener("click", () => {
     if(daySelected === undefined){
