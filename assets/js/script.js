@@ -192,11 +192,11 @@
   }*/
 
   removeTasksOfDay.addEventListener("click", () => {
-    if(dayToRemove === undefined){
+    if(daySelected === undefined){
       alert("Selecione um dia para remover atividades")
     }else{
       let updateTask = list.filter((task) =>{
-        return dayToRemove != task.day;
+        return daySelected != task.day;
       })
       list = updateTask;
       showDayTasks(daySelected);
