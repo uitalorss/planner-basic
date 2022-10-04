@@ -38,17 +38,44 @@
       width: 180px;
     }
   }
-
+  .scroll-y{
+    height: 60vh;
+    overflow-y: scroll;
+    &::-webkit-scrollbar-track {
+      background-color: #F4F4F4;
+    }
+    &::-webkit-scrollbar {
+      width: 6px;
+      background: #c0c0c0;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #dad7d7;
+    }
+    .scroll-x{
+      width: 90vw;
+      overflow-x: scroll;
+      transform: rotate(180deg);
+      margin-top: 2rem;
+      &::-webkit-scrollbar-track {
+        background-color: #F4F4F4;
+        padding: 2px;
+      }
+      &::-webkit-scrollbar {
+        height: 6px;
+        background: #c0c0c0;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #dad7d7;
+      }
   .appointments{
     display: flex;
     flex-direction: column;
     gap: 2rem;
     margin-top: 1rem;
-    height: 600px;
-    width: 1500px;
+    padding-top: 2rem;
     display: flex;
-    overflow-y: scroll;
-    overflow-x: scroll;
+    transform: rotate(180deg);
+
     .appointments__item{
       display: flex;
       gap: 2rem;
@@ -102,4 +129,7 @@
       }
     }
   }
+}
+
+}
 }

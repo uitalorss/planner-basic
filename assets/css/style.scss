@@ -7,7 +7,17 @@ body{
   font-family: 'Poppins', sans-serif;
   background-image: url(../img/logo-uol.svg);
   background-repeat: no-repeat;
-  background-position: 1300px 350px;
+  background-position: 1000px 350px;
+  &::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+  }
+  &::-webkit-scrollbar {
+    width: 6px;
+    background: #c0c0c0;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #dad7d7;
+  }
 }
 
 h3{
@@ -63,3 +73,4 @@ p{
 .danger{
   background: $danger;
 }
+
